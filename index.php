@@ -14,7 +14,7 @@ include 'php/header.php';
       <h7>Frage 1</h7>
       <h3>Wie gesund bist du körperlich?</h3>
 
-      <form action="question-2.php" method="post" onsubmit="return validateQuestion('range-slider');">
+      <form action="question-2.php" method="post" onsubmit="return validateRange('range-slider');">
         <p class="instruction">Schätze deine Gesundheit mit dem Slider ein.</p>
 
         <div class="row flex-nowrap">

@@ -7,7 +7,7 @@
       <h7>Frage 7</h7>
       <h3>Nimmst du Nahrungsergänzungsmittel?</h3>
 
-      <form action="question-8.php" method="post" onsubmit="return validateQuestion('number-text');">
+      <form action="feedback.php" method="post" onsubmit="return validateQuestion('number-text');">
         <label for="inputPassword5" class="form-label">Anzahl Mahlzeiten pro Tag</label>
         <input type="number" name="number-text" id="number-text" class="form-control" style="max-width: 80px;">
 

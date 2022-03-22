@@ -8,9 +8,9 @@
       <h3> An einem typischen Tag: Wie viele deiner
            Malzeiten oder Snacks enthalten Kohlenhydrate?</h3>
 
-      <form action="question-7.php" method="post" onsubmit="return validateNumber();">
+      <form action="question-7.php" method="post" onsubmit="return validateQuestion('number-text');">
         <label for="inputPassword5" class="form-label">Anzahl Mahlzeiten pro Tag</label>
-        <input type="number" name="number-text" id="number-text" class="form-control" style="max-width: 80px;" min="0" max="10">
+        <input type="number" name="number-text" id="number-text" class="form-control" style="max-width: 80px;">
 
         <input type="hidden" name="lastPageID" value="question-6">
         <p id="validation-warning" class="warning"></p>
