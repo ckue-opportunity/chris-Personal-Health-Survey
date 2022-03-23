@@ -2,11 +2,14 @@
 session_start();
 session_destroy();
 
-include 'php/header.php'; 
+include 'php/header.php';
 ?>
 
   <div class="row">
     <div class="col-sm-8">
+      
+      <?php include 'php/error-types.php'; ?>
+
       <!-- CONTENT -->
       <h3>Erfahre jetzt, wie gesund du bist!</h3>
       <p>Antworte auf 10 einfache Fragen und wir geben dir Feedback darauf.</p>
@@ -14,7 +17,7 @@ include 'php/header.php';
       <h7>Frage 1</h7>
       <h3>Wie gesund bist du körperlich?</h3>
 
-      <form action="question-2.php" method="post" onsubmit="return validateRange('range-slider');">
+      <form action="question-2.php" method="post" onsubmit="validateRange('range-slider');">
         <p class="instruction">Schätze deine Gesundheit mit dem Slider ein.</p>
 
         <div class="row flex-nowrap">
@@ -34,8 +37,11 @@ include 'php/header.php';
         <input type="hidden" name="range-slider-changed" id="range-slider-changed">
         <p id="validation-warning" class="warning"></p>
         <button type="submit" class="btn btn-primary">Next</button>
+
         <p class="spacer"></p>
       </form>
+
+      <button onclick="validateRange('bli-bli')">Test</button>
 
       <!-- END OF CONTENT -->
     </div>

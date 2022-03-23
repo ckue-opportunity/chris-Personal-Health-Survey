@@ -95,6 +95,12 @@ function validateRange(inputID) {
             return false;
         }
     }
+
+    /*
+    validation.js:89 Uncaught TypeError: Cannot read properties of null (reading 'type')
+    at validateRange (validation.js:89:22)
+    at HTMLButtonElement.onclick (index.php:53:50)
+    */
 }
 
 function sliderChanged() {
