@@ -58,6 +58,79 @@ function validateCheckboxes() {
     document.getElementById("checkboxValues").value = array.toString();
 }
 
+
+
+function evaluateCheckboxes() {
+    // Hole die Liste aller ausgewählten Checkboxen (checked).
+    // https://developer.mozilla.org/de/docs/Web/API/Document/querySelectorAll
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked'); // CSS3 Selector!!!!
+
+    if (checkboxes.length === 0) {
+        // Die liste der Checkboxen ist leer - es wurde keine ausgewählt.
+        setWarning("Bitte wähle eine Antwort aus.");
+        return false; // Submit-Aktion abbrechen.
+    }
+
+    // User hat Antworten ausgewählt: Zähle die erreichten Punkte zusammen.
+    let achievedPoints = 0; // Summe aller erreichten Punkte pro Frage.
+    let points; // Anzahl der Punkte einer einzelnen Antwort.
+    // oder kürzer als Liste
+    // let achievedPoints = 0, points;
+
+    for (let c = 0; c < checkboxes.length; c++) {
+        points = checkboxes[c].value; // Als 'value' kommt ein String.
+        points = parseInt(points); // String in ganze Zahl konvertieren. 
+
+        // Richtige Antwort: pts === 1
+        // Falsche Antwort: pts === 0
+        achievedPoints = achievedPoints + points; // oder kurz: achievedPoints += points;
+    }
+    
+    // Schreibe die erreichte Punktzahl ins Hidden Field 'achievedPoints'.
+    let hiddenField = document.getElementById("achievedPoints");
+    hiddenField.value = achievedPoints;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function evaluateCheckboxes___() {
+    // Hole die Liste aller ausgewählten Checkboxen (checked).
+    // https://developer.mozilla.org/de/docs/Web/API/Document/querySelectorAll
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+
+    if (checkboxes.length === 0) {
+        // Die Liste von ausgewählten Checkboxen (checked) ist leer.
+        setWarning("Bitte wähle zumindest eine Antwort aus.");
+        return false; // Bei false wird der weitere Submit gestoppt.        
+    }
+
+    // User hat Antworten ausgewählt: Zähle die erreichten Punkte zusammen.
+    let points = 0,
+        pts;
+
+    for (let i = 0; i < checkboxes.length; i++) {
+        pts = checkboxes[i].value; // 'value' ist ein String
+        pts = parseInt(pts); // String wird in eine ganze Zahl konvertiert...
+        points = points + parseInt(pts); // ... und zur Summe aller Punkte addiert.
+    }
+
+    // Schreibe die erreichte Punktzahl ins Hidden Field 'achievedPoints'.
+    let hiddenElement = document.getElementById("achievedPoints");
+    if (hiddenElement) hiddenElement.value = points;
+}
+
 function validateRadios(radioName) {
     // 'radioButtons' ist eine Liste die einen bis mehrere Radio Buttons enthalten kann.
     // Kann auch leer sein :-)
