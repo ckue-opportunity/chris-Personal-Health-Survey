@@ -5,7 +5,7 @@
       <!-- CONTENT -->
       <p><strong>Welche Farben hat die französische Flagge?</p>
 
-      <form action="question-2.php" method="post" onsubmit="return evaluateCheckboxes();">
+      <form action="quiz-report.php" method="post" onsubmit="return evaluateCheckboxes();">
             <input type="checkbox" id="answer-1" name="cbox-1" value="0">
             <label for="q41">orange</label><br>
 
