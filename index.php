@@ -1,4 +1,8 @@
 <?php 
+/*  Initialisiere die Session. Auf der Index-Seite, welche
+    die erste Frage und damit den Beginn der Umfrage anzeigt, 
+    sollen jeweils alle vorherigen Daten gelöscht werden.
+*/
 session_start();
 session_destroy();
 
@@ -7,9 +11,6 @@ include 'php/header.php';
 
   <div class="row">
     <div class="col-sm-8">
-      
-      <?php include 'php/error-types.php'; ?>
-
       <!-- CONTENT -->
       <h3>Erfahre jetzt, wie gesund du bist!</h3>
       <p>Antworte auf 10 einfache Fragen und wir geben dir Feedback darauf.</p>
@@ -33,7 +34,7 @@ include 'php/header.php';
         </div>
 
         <input type="range" name="range-slider" class="form-range" min="0" max="5" step="0.5" id="range-slider" onchange="sliderChanged();">
-        <input type="hidden" name="lastPageID" value="index">
+        <input type="hidden" name="lastPageID" value="question-1">
         <input type="hidden" name="range-slider-changed" id="range-slider-changed">
         <p id="validation-warning" class="warning"></p>
         <button type="submit" class="btn btn-primary">Next</button>
@@ -41,7 +42,7 @@ include 'php/header.php';
         <p class="spacer"></p>
       </form>
 
-      <button onclick="validateRange('bli-bli')">Test</button>
+      <!--button onclick="validateRange('bli-bli')">Test</button-->
 
       <!-- END OF CONTENT -->
     </div>
