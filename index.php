@@ -18,7 +18,7 @@ include 'php/header.php';
       <h7>Frage 1</h7>
       <h3>Wie gesund bist du körperlich?</h3>
 
-      <form action="question-2.php" method="post" onsubmit="validateRange('range-slider');">
+      <form action="question-2.php" method="post" onsubmit="return validateRange();">
         <p class="instruction">Schätze deine Gesundheit mit dem Slider ein.</p>
 
         <div class="row flex-nowrap">
@@ -33,7 +33,8 @@ include 'php/header.php';
             </div>
         </div>
 
-        <input type="range" name="range-slider" class="form-range" min="0" max="5" step="0.5" id="range-slider" onchange="sliderChanged();">
+        <input type="range" name="range-slider" id="range-slider" class="form-range" 
+               min="0" max="5" step="0.5" onchange="sliderChanged();">
         <input type="hidden" name="lastPageID" value="question-1">
         <input type="hidden" name="range-slider-changed" id="range-slider-changed">
         <p id="validation-warning" class="warning"></p>

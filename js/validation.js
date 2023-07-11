@@ -156,35 +156,29 @@ function validateRadios(radioName) {
         - im HTML: <input type="hidden" name="range-slider-changed">
         - im HTML: <input type="range" ... onchange="sliderChanged();">
 */
-function validateRange(inputID) {
-    let inputElement = document.getElementById(inputID);
+function validateRange() {
+    // Prüfe, ob der Range Slider verändert wurde.
+    if (!sliderHasChanged()) {
+        setWarning("Bitte verändere die Position des Sliders.");
 
-    if (inputElement.type === 'range') {
-        // Prüfe, ob der Range Slider verändert wurde.
-        if (!sliderHasChanged()) {
-            setWarning("Bitte verändere die Position des Sliders.");
-
-            // Stoppt den Sprung (action) auf die nächste Seite.
-            return false;
-        }
+        // Stoppt den Sprung (action) auf die nächste Seite.
+        return false;
     }
-
-    /*
-    validation.js:89 Uncaught TypeError: Cannot read properties of null (reading 'type')
-    at validateRange (validation.js:89:22)
-    at HTMLButtonElement.onclick (index.php:53:50)
-    */
+    else return true;
 }
 
 function sliderChanged() {
+    // Get hiddenInputElement "range-slider-changed" and set its value to 1.
     let hiddenInputElement = document.getElementById("range-slider-changed");
     hiddenInputElement.value = "1";
 }
 
 function sliderHasChanged() {
+    // Hole das hiddenInputElement "range-slider-changed" und gib true zurück
+    // falls die "1" eingetragen ist. Sonst gib false zurück.
     let hiddenInputElement = document.getElementById("range-slider-changed");
-
-    if (hiddenInputElement.value == "1") return true;
+    
+    if (hiddenInputElement.value === "1") return true;
     else return false;
 }
 
