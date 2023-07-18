@@ -1,12 +1,6 @@
 <?php 
-/*  Initialisiere die Session. Auf der Index-Seite, welche
-    die erste Frage und damit den Beginn der Umfrage anzeigt, 
-    sollen jeweils alle vorherigen Daten gelöscht werden.
-*/
-session_start();
-session_destroy();
-
-include 'php/header.php';
+  include "php/data-collector.php";
+  include 'php/header.php';
 ?>
 
   <div class="row">
@@ -15,35 +9,7 @@ include 'php/header.php';
       <h3>Erfahre jetzt, wie gesund du bist!</h3>
       <p>Antworte auf 10 einfache Fragen und wir geben dir Feedback darauf.</p>
       
-      <h7>Frage 1</h7>
-      <h3>Wie gesund bist du körperlich?</h3>
-
-      <form action="question-2.php" method="post" onsubmit="return validateRange();">
-        <p class="instruction">Schätze deine Gesundheit mit dem Slider ein.</p>
-
-        <div class="row flex-nowrap">
-            <div class="col">
-              <p>Ungesund</p>
-            </div>
-            <div class="col" style="text-align: center;">
-              <p>soso lala</p>
-            </div>
-            <div class="col" style="text-align: right;">
-              <p>Sehr gesund</p>
-            </div>
-        </div>
-
-        <input type="range" name="range-slider" id="range-slider" class="form-range" 
-               min="0" max="5" step="0.5" onchange="sliderChanged();">
-        <input type="hidden" name="lastPageID" value="question-1">
-        <input type="hidden" name="range-slider-changed" id="range-slider-changed">
-        <p id="validation-warning" class="warning"></p>
-        <button type="submit" class="btn btn-primary">Next</button>
-
-        <p class="spacer"></p>
-      </form>
-
-      <!--button onclick="validateRange('bli-bli')">Test</button-->
+      <?php include "php/question-template-switch.php"; ?>
 
       <!-- END OF CONTENT -->
     </div>

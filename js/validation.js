@@ -13,9 +13,9 @@ function validateText() {
     // Alles ok: gar nichts zurückgeben oder return true;
 }
 
-function validateNumber() {
+function validateNumber(numberID) {
     // <input type="number" id="number-text">
-    let value = document.getElementById("number-text").value;
+    let value = document.getElementById(numberID).value;
     let warning = "Bitte geben Sie eine Zahl ein.";
 
     // Wenn kein Wert eingegeben wurde, dann soll der Submit gestoppt werden.
@@ -151,12 +151,31 @@ function validateRadios(radioName) {
 }
 
 /*
+    Validiere den angegebenen Slider.
+
+    Falls der Wert auf "0" steht, dann zeige eine Warnung
+    und bleibe bei der aktuellen Frage.
+*/
+function validateRange(sliderId) {
+    let slider = document.getElementById(sliderId);
+
+    if (parseInt(slider.value) < 0) {
+        setWarning("Bitte verändere die Position des Sliders.");
+
+        // Stoppt den Sprung (action) auf die nächste Seite.
+        return false;
+    }
+
+    return true;
+}
+
+/*
     validateRange() ist abhängig von
         - sliderChanged() und sliderHasChanged()
         - im HTML: <input type="hidden" name="range-slider-changed">
         - im HTML: <input type="range" ... onchange="sliderChanged();">
 */
-function validateRange() {
+function validateRange1() {
     // Prüfe, ob der Range Slider verändert wurde.
     if (!sliderHasChanged()) {
         setWarning("Bitte verändere die Position des Sliders.");
