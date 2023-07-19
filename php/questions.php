@@ -1,6 +1,7 @@
 <?php
 
 // Hauptliste aller Fragen, Antworten und sonstigen Datenelemente
+// Damit lässt sich ein Maximum von 33 Punkten erreichen.
 $questions = array(
     array(
         "question-text" => "Wie gesund bist du körperlich?",
@@ -9,8 +10,10 @@ $questions = array(
         "min"           => -1,
         "max"           => 5,
         "value"         => -1,
-        "labels"        => array("ungesund", "soso lala", "sehr gesund") 
-        // points: selected range value
+        "labels"        => array("ungesund", "soso lala", "sehr gesund"), 
+        // Gemessener Wert zu Punkten umrechnen
+        "healthy-range" => array(3, 5),
+        "healthy-points"=> 3
     ),
     array(
         "question-text" => "Nimmst du Nahrungsergänzungsmittel?",
@@ -18,8 +21,9 @@ $questions = array(
         "values"        => array(
                             "Nein", "Ja"
         ),
-        // points: (Nein, 0) (Ja, 3)
+        // Gemessener Wert (Nein, Ja) zu Punkten umrechnen
         "healthy-value" => "Ja",
+        "healthy-range" => array(1, 1),
         "healthy-points"=> 3
     ),
     array(
@@ -28,14 +32,17 @@ $questions = array(
         "min"           => -1,
         "max"           => 5,
         "value"         => -1,
-        "labels"        => array("Überhaupt nicht wichtig", "", "Sehr wichtig")
-        // points: selected range value
+        "labels"        => array("Überhaupt nicht wichtig", "", "Sehr wichtig"),
+        // Gemessener Wert zu Punkten umrechnen
+        "healthy-range" => array(4, 5),
+        "healthy-points"=> 3
     ),
     array(
         "question-text" => "Welche zusätzliche körperliche Aktivität betreibst du am meisten?",
         "type"          => "checkbox",
         "values"        => array(
-                            "Keine zusätzliche körperliche Aktivität",
+                            /* Weglassen: "Keine zusätzliche körperliche Aktivität",
+                               dafür keine Validierung */
                             "Gewichte heben",
                             "Gehen",
                             "Wandern",
@@ -46,10 +53,10 @@ $questions = array(
                             "Aerobics",
                             "Pilates",
                             "Team Sport"
-                           )
-        // points: (Keine zusätzliche körperliche Aktivität, 0)
-        //          per sport: 1 point, maximal 5 points
-        //          "Keine zusätzliche körperliche Aktivität" gets 0 points and should reset all other items.
+                            ),
+        // Gemessener Wert (Anzahl ausgewählte Aktivitäten) zu Punkten umrechnen
+        "healthy-range" => array(1, 5),
+        "healthy-points"=> 6
     ),
     array(
         "question-text" => "Hast du das Gefühl, zu wenig, genügend oder viel zu viel zusätzliche körperliche Aktivitäten zu betreiben?",
@@ -58,8 +65,8 @@ $questions = array(
         "max"           => 5,
         "value"         => -1,
         "labels"        => array("Viel zu wenig", "gerade richtig", "viel zu viel"),
-        // points: (2-4, 3) and no points otherwise
-        "healthy-range" => array(2, 2),
+        // Gemessener Wert zu Punkten umrechnen
+        "healthy-range" => array(2, 4),
         "healthy-points"=> 3
     ),
     array(
@@ -68,7 +75,7 @@ $questions = array(
         "label"         => "Anzahl pro Tag",
         "min"           => 0,
         "max"           => 10,
-        // points: (2-3, 3) and no points otherwise
+        // Gemessener Wert zu Punkten umrechnen
         "healthy-range" => array(2, 3),
         "healthy-points"=> 3
     ),
@@ -78,7 +85,7 @@ $questions = array(
         "label"         => "Anzahl pro Tag",
         "min"           => 0,
         "max"           => 10,
-        // points: (2-3, 3) and no points otherwise
+        // Gemessener Wert zu Punkten umrechnen
         "healthy-range" => array(2, 3),
         "healthy-points"=> 3
     ),
@@ -88,7 +95,7 @@ $questions = array(
         "label"         => "Anzahl pro Tag",
         "min"           => 0,
         "max"           => 10,
-        // points: (1-3, 3) and no points otherwise
+        // Gemessener Wert zu Punkten umrechnen
         "healthy-range" => array(1, 3),
         "healthy-points"=> 3
     ),
@@ -98,7 +105,7 @@ $questions = array(
         "label"         => "Anzahl pro Tag",
         "min"           => 0,
         "max"           => 10,
-        // points: (1-3, 3) and no points otherwise
+        // Gemessener Wert zu Punkten umrechnen
         "healthy-range" => array(1, 3),
         "healthy-points"=> 3
     ),
@@ -108,7 +115,7 @@ $questions = array(
         "label"         => "Anzahl pro Tag",
         "min"           => 0,
         "max"           => 10,
-        // points: (0-1, 3) and no points otherwise
+        // Gemessener Wert zu Punkten umrechnen
         "healthy-range" => array(0, 1),
         "healthy-points"=> 3
     )

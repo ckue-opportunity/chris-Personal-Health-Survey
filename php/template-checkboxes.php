@@ -6,7 +6,7 @@
 <h7>Frage <?php echo $data["questionIndex"] + 1; ?></h7>
 <h3><?php echo $data["question-text"]; ?></h3>
 
-<form action="<?php echo $data["action"]; ?>" method="post" onsubmit="return validateCheckboxes();">
+<form action="<?php echo $data["action"]; ?>" method="post">
     <?php
         $values = $data["values"];
 
