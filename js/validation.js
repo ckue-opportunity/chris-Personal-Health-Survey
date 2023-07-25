@@ -13,9 +13,9 @@ function validateText() {
     // Alles ok: gar nichts zurückgeben oder return true;
 }
 
-function validateNumber() {
+function validateNumber(numberID) {
     // <input type="number" id="number-text">
-    let value = document.getElementById("number-text").value;
+    let value = document.getElementById(numberID).value;
     let warning = "Bitte geben Sie eine Zahl ein.";
 
     // Wenn kein Wert eingegeben wurde, dann soll der Submit gestoppt werden.
@@ -151,40 +151,53 @@ function validateRadios(radioName) {
 }
 
 /*
+    Validiere den angegebenen Slider.
+
+    Falls der Wert auf "0" steht, dann zeige eine Warnung
+    und bleibe bei der aktuellen Frage.
+*/
+function validateRange(sliderId) {
+    let slider = document.getElementById(sliderId);
+
+    if (parseInt(slider.value) < 0) {
+        setWarning("Bitte verändere die Position des Sliders.");
+
+        // Stoppt den Sprung (action) auf die nächste Seite.
+        return false;
+    }
+
+    return true;
+}
+
+/*
     validateRange() ist abhängig von
         - sliderChanged() und sliderHasChanged()
         - im HTML: <input type="hidden" name="range-slider-changed">
         - im HTML: <input type="range" ... onchange="sliderChanged();">
 */
-function validateRange(inputID) {
-    let inputElement = document.getElementById(inputID);
+function validateRange1() {
+    // Prüfe, ob der Range Slider verändert wurde.
+    if (!sliderHasChanged()) {
+        setWarning("Bitte verändere die Position des Sliders.");
 
-    if (inputElement.type === 'range') {
-        // Prüfe, ob der Range Slider verändert wurde.
-        if (!sliderHasChanged()) {
-            setWarning("Bitte verändere die Position des Sliders.");
-
-            // Stoppt den Sprung (action) auf die nächste Seite.
-            return false;
-        }
+        // Stoppt den Sprung (action) auf die nächste Seite.
+        return false;
     }
-
-    /*
-    validation.js:89 Uncaught TypeError: Cannot read properties of null (reading 'type')
-    at validateRange (validation.js:89:22)
-    at HTMLButtonElement.onclick (index.php:53:50)
-    */
+    else return true;
 }
 
 function sliderChanged() {
+    // Get hiddenInputElement "range-slider-changed" and set its value to 1.
     let hiddenInputElement = document.getElementById("range-slider-changed");
     hiddenInputElement.value = "1";
 }
 
 function sliderHasChanged() {
+    // Hole das hiddenInputElement "range-slider-changed" und gib true zurück
+    // falls die "1" eingetragen ist. Sonst gib false zurück.
     let hiddenInputElement = document.getElementById("range-slider-changed");
-
-    if (hiddenInputElement.value == "1") return true;
+    
+    if (hiddenInputElement.value === "1") return true;
     else return false;
 }
 

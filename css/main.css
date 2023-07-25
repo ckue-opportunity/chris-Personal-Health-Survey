@@ -5,10 +5,16 @@
 .warning {
     color: red;
     min-height: 20px;
-    margin-top: 5px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .spacer {
     min-height: 20px;
+}
+
+.footer-bottom {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
 }
