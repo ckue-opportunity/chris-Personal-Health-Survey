@@ -9,7 +9,7 @@
   <script src="/js/validation.js"></script>
   <link href="/css/main.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 
 <div class="container-fluid p-5 bg-primary text-white text-center">
   <h1>Umfrage zu Ernährung, Fitness und Sport</h1>

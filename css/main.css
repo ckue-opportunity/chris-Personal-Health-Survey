@@ -12,3 +12,9 @@
 .spacer {
     min-height: 20px;
 }
+
+.footer-bottom {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
